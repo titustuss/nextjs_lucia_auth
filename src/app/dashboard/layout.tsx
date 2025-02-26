@@ -10,8 +10,13 @@ export default async function Layout({
   children: React.ReactNode;
 }) {
   const session = await validateRequest();
-
   if (!session.user) redirect("/login");
+
+  // Optionally, handle admin-specific logic
+  if (session.user.role === "ADMIN") {
+    console.log("Admin user detected.");
+    // You can redirect or show admin-specific content here
+  }
 
   return (
     <SessionProvider value={session}>

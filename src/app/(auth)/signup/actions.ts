@@ -63,6 +63,7 @@ export async function signUp(
         displayName: username,
         email,
         passwordHash,
+        role: email === process.env.ADMIN_EMAIL ? "ADMIN" : "AGENT",
       },
     });
 
